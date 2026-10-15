@@ -139,6 +139,8 @@ a:focus-visible, button:focus-visible { outline: 1px solid var(--brass); outline
 }
 .nav a.link { white-space: nowrap; }
 .nav a.link:hover { color: var(--ivory); background-size: 100% 1px; }
+.nav a.link-ai { display: inline-flex; align-items: center; gap: 0.5em; color: var(--brass); }
+.nav a.link-ai svg { width: 1.15em; height: 1.15em; flex: none; }
 
 .btn {
   display: inline-flex;
@@ -165,13 +167,13 @@ a:focus-visible, button:focus-visible { outline: 1px solid var(--brass); outline
 .btn-sm { padding: 12px 18px; }
 
 .menu-btn { display: none; }
-@media (max-width: 999px) {
+@media (max-width: 1149px) {
   .top .wrap { column-gap: 18px; }
   .top .nav { gap: 16px; }
   .nav a.link { font-size: 0.66rem; letter-spacing: 0.1em; }
   .head-cta { padding: 11px 14px; font-size: 0.7rem; letter-spacing: 0.14em; }
 }
-@media (max-width: 699px) {
+@media (max-width: 799px) {
   .top .wrap { grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "brand . cta menu"; column-gap: 10px; }
   .menu-btn {
     grid-area: menu;
@@ -646,6 +648,7 @@ section[id] { scroll-margin-top: 90px; }
     </a>
     <nav class="nav" id="menu-sezioni" aria-label="Sezioni">
       <a class="link" href="#negozio">Il negozio</a>
+      <a class="link link-ai" href="#misura"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>Progettista</a>
       <a class="link" href="#come-lavoriamo">Come lavoriamo</a>
       <a class="link" href="#chi-siamo">Chi siamo</a>
       <a class="link" href="#contatti">Contatti</a>
