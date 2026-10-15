@@ -1,3 +1,16 @@
 [build]
   publish = "public"
   functions = "netlify/functions"
+
+# catahousegroup.com e www.catahousegroup.com portano al sito principale catahousegroup.it
+[[redirects]]
+  from = "https://catahousegroup.com/*"
+  to = "https://catahousegroup.it/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.catahousegroup.com/*"
+  to = "https://catahousegroup.it/:splat"
+  status = 301
+  force = true
