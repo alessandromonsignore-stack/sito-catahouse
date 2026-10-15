@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CataHouse group Arredamenti</title>
 <meta name="description" content="CataHouse group Arredamenti: showroom di arredamento ad Alba Adriatica, Viale Mazzini 154/B. Marchi di prestigio, consegna e montaggio con la nostra squadra.">
+<link rel="alternate" hreflang="it" href="https://regal-hamster-3ac913.netlify.app/">
+<link rel="alternate" hreflang="ro" href="https://regal-hamster-3ac913.netlify.app/ro/">
+<link rel="alternate" hreflang="en" href="https://regal-hamster-3ac913.netlify.app/en/">
+<link rel="alternate" hreflang="fr" href="https://regal-hamster-3ac913.netlify.app/fr/">
+<link rel="alternate" hreflang="de" href="https://regal-hamster-3ac913.netlify.app/de/">
+<link rel="alternate" hreflang="x-default" href="https://regal-hamster-3ac913.netlify.app/">
 <link rel="canonical" href="https://regal-hamster-3ac913.netlify.app/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
@@ -107,7 +113,7 @@ a:focus-visible, button:focus-visible { outline: 1px solid var(--brass); outline
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--hair);
 }
-.top .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "brand nav cta"; align-items: center; column-gap: clamp(18px, 2.6vw, 36px); row-gap: 10px; padding-block: 12px; }
+.top .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "brand nav lang cta"; align-items: center; column-gap: clamp(18px, 2.6vw, 36px); row-gap: 10px; padding-block: 12px; }
 .top .brand { grid-area: brand; justify-self: start; }
 .top .nav { grid-area: nav; justify-self: end; }
 .head-cta { grid-area: cta; justify-self: end; }
@@ -167,14 +173,14 @@ a:focus-visible, button:focus-visible { outline: 1px solid var(--brass); outline
 .btn-sm { padding: 12px 18px; }
 
 .menu-btn { display: none; }
-@media (max-width: 1149px) {
+@media (max-width: 1279px) {
   .top .wrap { column-gap: 18px; }
   .top .nav { gap: 16px; }
   .nav a.link { font-size: 0.66rem; letter-spacing: 0.1em; }
   .head-cta { padding: 11px 14px; font-size: 0.7rem; letter-spacing: 0.14em; }
 }
-@media (max-width: 799px) {
-  .top .wrap { grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "brand . cta menu"; column-gap: 10px; }
+@media (max-width: 959px) {
+  .top .wrap { grid-template-columns: auto minmax(0, 1fr) auto auto auto; grid-template-areas: "brand . lang cta menu"; column-gap: 8px; }
   .menu-btn {
     grid-area: menu;
     display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
@@ -252,6 +258,13 @@ a:focus-visible, button:focus-visible { outline: 1px solid var(--brass); outline
 .hero h1 .stop { color: var(--red-hi); }
 .lead { font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.25rem); font-weight: 400; line-height: 1.65; color: var(--ivory-2); max-width: 31em; }
 .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-free { display: inline-flex; align-items: center; gap: 14px; max-width: 100%; padding: 14px 18px; border: 1px solid var(--brass-dim); background: rgba(196, 163, 116, 0.08); color: var(--ivory); font: inherit; font-size: 1.02rem; line-height: 1.4; text-align: left; cursor: pointer; transition: border-color .3s, background-color .3s; }
+.hero-free:hover { border-color: var(--brass); background: rgba(196, 163, 116, 0.14); }
+.hero-free:focus-visible { outline: 1px solid var(--brass); outline-offset: 3px; }
+.hero-free b { color: var(--brass); font-weight: 600; }
+.hero-free svg { width: 24px; height: 24px; flex: none; fill: none; stroke: var(--brass); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.hero-free i { font-style: normal; color: var(--brass); margin-left: auto; padding-left: 4px; transition: transform .3s; }
+.hero-free:hover i { transform: translateX(3px); }
 .hero-meta { font-family: var(--f-display); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ivory-3); }
 .tricolore { display: flex; width: 72px; height: 2px; flex: none; }
 .tricolore span { flex: 1; }
@@ -346,7 +359,8 @@ a:focus-visible, button:focus-visible { outline: 1px solid var(--brass); outline
 }
 
 /* Come lavoriamo */
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(28px, 3.4vw, 56px); }
+@media (max-width: 1100px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .step { display: grid; gap: 16px; align-content: start; padding-top: 30px; border-top: 1px solid var(--hair); min-width: 0; }
 .step .num { font-family: var(--f-display); font-weight: 300; font-size: clamp(3rem, 2.4rem + 2.2vw, 4.4rem); line-height: 0.9; letter-spacing: 0.04em; color: var(--brass); }
 .step h3 { font-size: clamp(1.6rem, 1.35rem + 0.8vw, 2rem); }
@@ -634,6 +648,30 @@ html:has(dialog[open]) { overflow: hidden; }
 #wall-svg { display: block; width: 100%; height: auto; }
 @media (max-width: 600px) { .k3t { font-size: 10.5px; stroke-width: 6px; } .k3t.tot { font-size: 11px; } .k3-hint { font-size: 0.64rem; } }
 
+/* Lingue */
+.lang { grid-area: lang; position: relative; }
+.lang-btn { display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 10px; background: none; border: 1px solid var(--hair); color: var(--ivory-2); font-family: var(--f-display); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.14em; cursor: pointer; transition: border-color .3s, color .3s; }
+.lang-btn:hover, .lang-btn[aria-expanded="true"] { border-color: var(--brass); color: var(--ivory); }
+.lang-btn:focus-visible { outline: 1px solid var(--brass); outline-offset: 2px; }
+.lang-btn svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.4; }
+.lang-list { position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; min-width: 160px; margin: 0; padding: 6px 0; list-style: none; background: var(--night); border: 1px solid var(--hair); box-shadow: 0 18px 30px rgba(0, 0, 0, 0.45); }
+.lang-list[hidden] { display: none; }
+.lang-list a { display: block; padding: 10px 18px; font-family: var(--f-display); font-size: 0.92rem; color: var(--ivory-2); text-decoration: none; }
+.lang-list a:hover, .lang-list a:focus-visible { color: var(--ivory); background: rgba(196, 163, 116, 0.08); outline: none; }
+.lang-list a[aria-current="true"] { color: var(--brass); }
+.foot-lang { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; font-family: var(--f-display); font-size: 0.85rem; }
+.foot-lang a { color: var(--ivory-3); text-decoration: none; border-bottom: 1px solid transparent; }
+.foot-lang a:hover { color: var(--ivory); border-color: var(--ivory-3); }
+.foot-lang a[aria-current="true"] { color: var(--brass); }
+@media (max-width: 380px) { .lang-btn { padding: 0 8px; gap: 4px; } .lang-btn .lang-code { display: none; } }
+.head-cta { white-space: nowrap; }
+@media (max-width: 360px) {
+  .top .wrap { column-gap: 6px; }
+  .top .brand img { height: 40px; }
+  .head-cta { padding: 9px 9px; font-size: 0.64rem; letter-spacing: 0.08em; }
+  .menu-btn { width: 40px; height: 40px; }
+}
+
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 section[id] { scroll-margin-top: 90px; }
 </style>
@@ -653,6 +691,10 @@ section[id] { scroll-margin-top: 90px; }
       <a class="link" href="#chi-siamo">Chi siamo</a>
       <a class="link" href="#contatti">Contatti</a>
     </nav>
+    <div class="lang" id="lang">
+      <button class="lang-btn" type="button" aria-expanded="false" aria-controls="lang-list" aria-label="Lingua del sito: Italiano"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg><span class="lang-code">IT</span></button>
+      <ul class="lang-list" id="lang-list" hidden><li><a href="./" hreflang="it" lang="it" data-l="it" aria-current="true">Italiano</a></li><li><a href="ro/" hreflang="ro" lang="ro" data-l="ro">Română</a></li><li><a href="en/" hreflang="en" lang="en" data-l="en">English</a></li><li><a href="fr/" hreflang="fr" lang="fr" data-l="fr">Français</a></li><li><a href="de/" hreflang="de" lang="de" data-l="de">Deutsch</a></li></ul>
+    </div>
     <button class="btn btn-red btn-sm head-cta" type="button" data-open-form>Contattaci</button>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-sezioni" aria-label="Apri il menu"><span></span><span></span><span></span></button>
   </div>
@@ -670,6 +712,7 @@ section[id] { scroll-margin-top: 90px; }
         </h1>
         <div class="hero-rest">
         <p class="lead">Showroom di arredamento ad Alba Adriatica. Marchi di prestigio da vedere e toccare dal vivo, e una squadra esperta che consegna e monta tutto a casa tua.</p>
+        <button class="hero-free" type="button" data-open-form data-prefill="Vorrei prenotare il sopralluogo e le misure a casa mia per un preventivo gratuito."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 8.5h19v7h-19z"/><path d="M6.5 8.5v3M10.5 8.5v4M14.5 8.5v3M18.5 8.5v4"/></svg><span>Sopralluogo e misure a casa tua, <b>preventivo gratuito</b></span><i aria-hidden="true">→</i></button>
         <div class="actions">
           <a class="btn btn-red" href="tel:+393281804285">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
@@ -880,16 +923,21 @@ section[id] { scroll-margin-top: 90px; }
       <ol class="steps">
         <li class="step">
           <span class="num" aria-hidden="true">I</span>
-          <h3>Vieni a trovarci</h3>
-          <p>Ti aspettiamo in Viale Mazzini: guarda i mobili dal vivo e decidi con calma. Ti aiutiamo con misure, finiture e abbinamenti.</p>
+          <h3>Misure a casa tua</h3>
+          <p>Veniamo noi per il sopralluogo e prendiamo le misure di ogni parete e di ogni nicchia. Poi ti prepariamo il preventivo gratuito.</p>
         </li>
         <li class="step">
           <span class="num" aria-hidden="true">II</span>
+          <h3>Vieni a trovarci</h3>
+          <p>Ti aspettiamo in Viale Mazzini: guarda i mobili dal vivo e decidi con calma. Ti aiutiamo con finiture e abbinamenti.</p>
+        </li>
+        <li class="step">
+          <span class="num" aria-hidden="true">III</span>
           <h3>Consegniamo noi</h3>
           <p>Niente corrieri: il trasporto lo fa la nostra squadra, con i nostri furgoni, fino dentro casa.</p>
         </li>
         <li class="step">
-          <span class="num" aria-hidden="true">III</span>
+          <span class="num" aria-hidden="true">IV</span>
           <h3>Montiamo noi</h3>
           <p>Le stesse persone che hanno consegnato montano tutto a regola d'arte, e ti lasciano la stanza pronta da vivere.</p>
         </li>
@@ -1006,6 +1054,7 @@ section[id] { scroll-margin-top: 90px; }
     </div>
     <p>CataHouse group Arredamenti · Viale Mazzini 154/B · 64011 Alba Adriatica (TE)<br>CATA HOUSE GROUP S.r.l.s. unipersonale · Sede legale Via Cavour 2, 64011 Alba Adriatica (TE)<br>Capitale sociale € 3.000,00 i.v. · C.F. e P.IVA 02205190677 · Registro Imprese del Gran Sasso d'Italia, REA TE-217567<br>PEC catahousegroupsrls@pec.it</p>
     <button type="button" class="linkish foot-privacy" data-open-privacy>Informativa privacy</button>
+    <nav class="foot-lang" aria-label="Lingue"><a href="./" hreflang="it" lang="it" data-l="it" aria-current="true">Italiano</a> <a href="ro/" hreflang="ro" lang="ro" data-l="ro">Română</a> <a href="en/" hreflang="en" lang="en" data-l="en">English</a> <a href="fr/" hreflang="fr" lang="fr" data-l="fr">Français</a> <a href="de/" hreflang="de" lang="de" data-l="de">Deutsch</a></nav>
   </div>
 </footer>
 
@@ -1060,8 +1109,10 @@ section[id] { scroll-margin-top: 90px; }
       <p>Il tempo necessario a gestire la tua richiesta e comunque non oltre 12 mesi, salvo che nasca un contratto. Non cediamo i tuoi dati a terzi per fini commerciali.</p>
       <h3>I tuoi diritti</h3>
       <p>Puoi chiedere accesso, rettifica, cancellazione, limitazione, opposizione e portabilità dei dati (artt. 15-22) scrivendo ai contatti sopra. Puoi anche presentare reclamo al Garante per la protezione dei dati personali (garanteprivacy.it).</p>
+      <h3>Progettista AI</h3>
+      <p>Quello che scrivi nel progettista (misure e descrizione della cucina) viene inviato a un servizio di intelligenza artificiale, Anthropic tramite Netlify, solo per preparare la proposta, e non viene salvato da noi. Non scrivere dati personali nella descrizione.</p>
       <h3>Navigazione e cookie</h3>
-      <p>Il sito non usa cookie di profilazione né strumenti di statistica di terze parti, e i caratteri sono ospitati sul sito stesso. Usa solo una memoria tecnica del browser per non riproporti il modulo a ogni visita. Il sito è ospitato da Netlify, che può registrare dati tecnici di navigazione, come l'indirizzo IP, per motivi di sicurezza.</p>
+      <p>Il sito non usa cookie di profilazione né strumenti di statistica di terze parti, e i caratteri sono ospitati sul sito stesso. Usa solo una memoria tecnica del browser per non riproporti il modulo a ogni visita e per contare le proposte del progettista. Il sito è ospitato da Netlify, che può registrare dati tecnici di navigazione, come l'indirizzo IP, per motivi di sicurezza.</p>
       <p class="note">Ultimo aggiornamento: ottobre 2026.</p>
     </div>
   </div>
@@ -1071,6 +1122,7 @@ section[id] { scroll-margin-top: 90px; }
 
 <script>
 (function () {
+  /*I18N*/var TX = {"lang": "it", "copied": "Numero copiato", "selected": "Numero selezionato", "menuOpen": "Apri il menu", "menuClose": "Chiudi il menu", "fName": "il nome", "fSurname": "il cognome", "fTel": "un numero di telefono valido", "fMsg": "la descrizione della richiesta (almeno qualche parola)", "fPrivacy": "la conferma dell'informativa privacy", "missing": "Manca {x}.", "waHead": "Ciao CataHouse! Nuova richiesta dal sito.", "waName": "Nome", "waTel": "Telefono", "waReq": "Richiesta", "wallA": "Parete A", "wallB": "Parete B", "pen": "Penisola", "isl": "Isola", "titleFallback": "La tua cucina", "tipi": {"lavello": "lavello", "lavastoviglie": "lavastoviglie", "piano_cottura": "piano cottura", "forno_sotto": "forno sotto il piano", "base": "base", "cassettiera": "cassettiera", "estraibile": "estraibile", "angolo": "angolo", "frigo_sottotop": "frigo sottotop", "colonna_frigo": "colonna frigo", "colonna_forno": "colonna forno", "colonna_dispensa": "colonna dispensa", "raccordo": "raccordo"}, "tipiShort": {"lavello": "LAV", "lavastoviglie": "LS", "piano_cottura": "PC", "forno_sotto": "FORNO", "base": "", "cassettiera": "CASS", "estraibile": "E", "angolo": "ANG", "frigo_sottotop": "FRIGO", "colonna_frigo": "FRIGO", "colonna_forno": "FORNO", "colonna_dispensa": "DISP", "raccordo": ""}, "prefillPlan": "Vorrei questo progetto: {t}. {s}.", "notes": " Le mie note: {n}", "prefillStart": "Vorrei un progetto per la mia cucina.", "wallLen": "Parete {n} cm.", "needInput": "Scrivi almeno la lunghezza della parete o qualche riga sulla tua cucina.", "busy": "Il progettista sta disegnando la tua cucina", "tagExample": "Esempio", "tagYours": "La tua proposta", "aiLang": "italiano, dando del tu al cliente", "err": {"not_granted": "Per usare il progettista devi consentire l'uso dell'AI. Intanto puoi richiederci un progetto con il pulsante qui sotto.", "rate_limited": "Troppe richieste in poco tempo: riprova tra qualche minuto.", "daily_limit": "Per oggi hai già provato il progettista 3 volte. Richiedi il progetto con le misure: lo prepariamo noi sulla tua cucina.", "invalid_json": "Non sono riuscito a leggere la proposta: riprova, magari con una descrizione più semplice.", "unavailable": "Il progettista AI in questo momento non è attivo. Raccontaci la tua cucina con il pulsante \"Richiedi il progetto con le misure\" e la progettiamo noi."}, "example": {"titolo": "Cucina lineare con colonne", "spiegazione": "Un esempio di cucina lineare: lavello e lavastoviglie vicini, il piano cottura con la cappa e un estraibile per spezie e oli, poi le colonne di forno e frigo. Scrivi la tua parete e i tuoi desideri qui sopra e il progettista prepara la tua proposta.", "consigli": ["Tra piano cottura e colonna conviene lasciare un po' di piano libero per appoggiare le pentole", "Con una parete più corta il frigo può diventare sottotop e il forno andare sotto il piano"]}, "k3aria": "Vista 3D della cucina proposta: ", "hintTouch": "Scorri di lato per ruotare", "quizCount": "Domanda {n} di {t}", "yourStyle": "Il tuo stile", "quizWa": "Ciao CataHouse! Ho fatto il quiz sul sito: il mio stile è {s}.", "quizWaEnd": "Vorrei parlarne in negozio.", "startFrom": "Partiamo da: {r}. Vieni a vederlo dal vivo in Viale Mazzini.", "talk": "Parliamone in negozio", "again": "Rifai il quiz", "styles": {"M": {"name": "Moderno", "desc": "Linee essenziali, superfici lisce e colori neutri con un dettaglio deciso. Ti piace una casa ordinata, dove ogni cosa ha il suo posto.", "tips": ["Cucine con ante senza maniglie", "Divani dalle linee basse", "Luci a sospensione essenziali"]}, "C": {"name": "Classico", "desc": "Ami il fascino che non passa di moda: legni pregiati, dettagli curati, marmo e tessuti morbidi.", "tips": ["Cucine con ante a telaio", "Vetrine e boiserie", "Lampadari e luci calde"]}, "N": {"name": "Naturale", "desc": "Luce, legno chiaro, fibre naturali e piante: per te la casa è un posto dove respirare.", "tips": ["Rovere e frassino", "Tessuti in lino e cotone", "Lampade in paglia e carta"]}, "I": {"name": "Industriale", "desc": "Carattere da loft: metallo, mattoni, legno vissuto e un tocco di città.", "tips": ["Piani effetto cemento", "Strutture in metallo nero", "Mensole a giorno e luci a gabbia"]}}, "quiz": [{"q": "Quale sedia sceglieresti?", "key": "Sedia", "opts": ["Linee pulite", "Eleganza classica", "Legno naturale", "Metallo e carattere"]}, {"q": "Che materiale ti piace toccare?", "key": "Materiale", "opts": ["Laccato opaco", "Marmo e venature", "Rovere e fibre", "Mattoni e ferro"]}, {"q": "Che lampada accenderesti?", "key": "Lampada", "opts": ["Sospensione essenziale", "Lampadario", "Paglia intrecciata", "Lampadina a gabbia"]}, {"q": "Da quale stanza vuoi partire?", "key": "Stanza", "opts": ["Cucina", "Soggiorno", "Camera", "Tutta la casa"]}]};/*/I18N*/
   var btn = document.getElementById('copy-tel');
   var toast = document.getElementById('toast');
   var timer;
@@ -1091,14 +1143,14 @@ section[id] { scroll-margin-top: 90px; }
     var text = '3281804285';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
-        show('Numero copiato');
+        show(TX.copied);
       }, function () {
         selectNumber();
-        show('Numero selezionato');
+        show(TX.selected);
       });
     } else {
       selectNumber();
-      show('Numero selezionato');
+      show(TX.selected);
     }
   });
 
@@ -1107,12 +1159,18 @@ section[id] { scroll-margin-top: 90px; }
   function setMenu(open) {
     top.classList.toggle('open', open);
     menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    menuBtn.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
+    menuBtn.setAttribute('aria-label', open ? TX.menuClose : TX.menuOpen);
   }
   menuBtn.addEventListener('click', function () { setMenu(!top.classList.contains('open')); });
   document.querySelectorAll('.nav a.link').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
   document.addEventListener('click', function (e) { if (!top.contains(e.target)) setMenu(false); });
+
+  var langBtn = document.querySelector('.lang-btn'), langList = document.getElementById('lang-list');
+  function setLang(open) { langList.hidden = !open; langBtn.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  langBtn.addEventListener('click', function (e) { e.stopPropagation(); setLang(langList.hidden); if (!langList.hidden) setMenu(false); });
+  document.addEventListener('click', function (e) { if (!langList.hidden && !e.target.closest('.lang')) setLang(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !langList.hidden) { setLang(false); langBtn.focus(); } });
 
   var formDlg = document.getElementById('richiesta');
   var privDlg = document.getElementById('privacy');
@@ -1160,24 +1218,24 @@ section[id] { scroll-margin-top: 90px; }
       el.setAttribute('aria-invalid', valid ? 'false' : 'true');
       if (!valid) missing.push(label);
     }
-    check(nome, nome.value.trim().length > 1, 'il nome');
-    check(cognome, cognome.value.trim().length > 1, 'il cognome');
-    check(tel, tel.value.replace(/\D/g, '').length >= 8, 'un numero di telefono valido');
-    check(msg, msg.value.trim().length >= 10, 'la descrizione della richiesta (almeno qualche parola)');
+    check(nome, nome.value.trim().length > 1, TX.fName);
+    check(cognome, cognome.value.trim().length > 1, TX.fSurname);
+    check(tel, tel.value.replace(/\D/g, '').length >= 8, TX.fTel);
+    check(msg, msg.value.trim().length >= 10, TX.fMsg);
     ok.closest('.check').classList.toggle('bad', !ok.checked);
-    if (!ok.checked) missing.push("la conferma dell'informativa privacy");
+    if (!ok.checked) missing.push(TX.fPrivacy);
     if (missing.length) {
-      errBox.textContent = 'Manca ' + missing.join(', ') + '.';
+      errBox.textContent = TX.missing.replace('{x}', function () { return missing.join(', '); });
       errBox.hidden = false;
       var first = form.querySelector('[aria-invalid="true"]') || ok;
       first.focus();
       return;
     }
     errBox.hidden = true;
-    var text = 'Ciao CataHouse! Nuova richiesta dal sito.\n' +
-      'Nome: ' + nome.value.trim() + ' ' + cognome.value.trim() + '\n' +
-      'Telefono: ' + tel.value.trim() + '\n' +
-      'Richiesta: ' + msg.value.trim();
+    var text = TX.waHead + '\n' +
+      TX.waName + ': ' + nome.value.trim() + ' ' + cognome.value.trim() + '\n' +
+      TX.waTel + ': ' + tel.value.trim() + '\n' +
+      TX.waReq + ': ' + msg.value.trim();
     var url = 'https://wa.me/393281804285?text=' + encodeURIComponent(text);
     waGo.href = url;
     stepForm.hidden = true;
@@ -1205,9 +1263,11 @@ section[id] { scroll-margin-top: 90px; }
   var aiExpl = document.getElementById('ai-expl'), aiTips = document.getElementById('ai-tips');
   var formaBox = document.getElementById('ai-forma');
   var forma = 'Consigliami tu';
-  var PROMPT = "Sei il progettista di cucine dello showroom CataHouse group Arredamenti ad Alba Adriatica (Teramo). Proponi UNA composizione di cucina realistica per questo cliente, usando moduli di misure commerciali italiane.\n\nDati del cliente:\n- Lunghezza della parete principale: {LEN}\n- Forma desiderata: {FORMA}\n- Descrizione del cliente: {DESC}\n\nRegole del mestiere (indicative, non rigide; adattale al caso):\n- Basi profonde 60 cm. Larghezze comuni delle basi: 15, 20, 30, 40, 45, 50, 60, 80, 90, 100, 120 cm. Estraibili e portabottiglie da 15 a 40 cm.\n- Colonne alte da 60 cm (frigo, forno); dispensa anche da 30, 45 o 60 cm.\n- Negli spazi piccoli: frigo sottotop da 60, forno sotto il piano cottura, lavastoviglie da 45, meno colonne. Non esiste una lunghezza minima: anche con 120-200 cm proponi una soluzione compatta sensata.\n- Lavello su base da 60 a 120 cm, con la lavastoviglie accanto. Piano cottura su base da 60 o 90 con la cappa sopra, possibilmente a 30-40 cm da colonne e pareti.\n- In una cucina ad angolo usa un modulo \"angolo\" (90 o 110 cm) all'inizio della seconda parete o alla fine della prima.\n- Per ogni parete la somma delle larghezze dei moduli deve essere uguale alla lunghezza della parete; se avanzano meno di 15 cm usa un modulo \"raccordo\".\n- Penisola o isola: da 90 a 240 cm, con basi o cassettiere; possono avere il lavello o il piano cottura.\n- Se il cliente non indica la forma, scegli tu la più adatta. Se non indica misure, proponi misure plausibili.\n- Nel titolo, nella spiegazione e nei consigli non scrivere misure né numeri in centimetri: le misure il cliente le riceve con il progetto completo.\n\nRispondi solo con un oggetto JSON in questo formato, senza altro testo:\n{\"titolo\": \"titolo breve della proposta\", \"pareti\": [{\"nome\": \"Parete A\", \"lunghezza\": 360, \"moduli\": [{\"tipo\": \"lavello\", \"larghezza\": 80}]}], \"penisola\": null, \"isola\": null, \"spiegazione\": \"2-3 frasi in italiano, tono cordiale, dando del tu al cliente\", \"consigli\": [\"al massimo 3 consigli brevi\"]}\n\nRegole del JSON:\n- \"tipo\" è sempre uno di: lavello, lavastoviglie, piano_cottura, forno_sotto, base, cassettiera, estraibile, angolo, frigo_sottotop, colonna_frigo, colonna_forno, colonna_dispensa, raccordo.\n- I moduli di ogni parete vanno elencati da sinistra a destra. Al massimo 2 pareti.\n- \"penisola\" e \"isola\", se presenti, hanno la forma {\"lunghezza\": 150, \"moduli\": [...]}, altrimenti null.\n- Le larghezze sono numeri interi in centimetri.";
+  var PROMPT = "Sei il progettista di cucine dello showroom CataHouse group Arredamenti ad Alba Adriatica (Teramo). Proponi UNA composizione di cucina realistica per questo cliente, usando moduli di misure commerciali italiane.\n\nDati del cliente:\n- Lunghezza della parete principale: {LEN}\n- Forma desiderata: {FORMA}\n- Descrizione del cliente: {DESC}\n\nRegole del mestiere (indicative, non rigide; adattale al caso):\n- Basi profonde 60 cm. Larghezze comuni delle basi: 15, 20, 30, 40, 45, 50, 60, 80, 90, 100, 120 cm. Estraibili e portabottiglie da 15 a 40 cm.\n- Colonne alte da 60 cm (frigo, forno); dispensa anche da 30, 45 o 60 cm.\n- Negli spazi piccoli: frigo sottotop da 60, forno sotto il piano cottura, lavastoviglie da 45, meno colonne. Non esiste una lunghezza minima: anche con 120-200 cm proponi una soluzione compatta sensata.\n- Lavello su base da 60 a 120 cm, con la lavastoviglie accanto. Piano cottura su base da 60 o 90 con la cappa sopra, possibilmente a 30-40 cm da colonne e pareti.\n- In una cucina ad angolo usa un modulo \"angolo\" (90 o 110 cm) all'inizio della seconda parete o alla fine della prima.\n- Per ogni parete la somma delle larghezze dei moduli deve essere uguale alla lunghezza della parete; se avanzano meno di 15 cm usa un modulo \"raccordo\".\n- Penisola o isola: da 90 a 240 cm, con basi o cassettiere; possono avere il lavello o il piano cottura.\n- Se il cliente non indica la forma, scegli tu la più adatta. Se non indica misure, proponi misure plausibili.\n- Nel titolo, nella spiegazione e nei consigli non scrivere misure né numeri in centimetri: le misure il cliente le riceve con il progetto completo.\n- Scrivi titolo, spiegazione e consigli in {LINGUA}.\n\nRispondi solo con un oggetto JSON in questo formato, senza altro testo:\n{\"titolo\": \"titolo breve della proposta\", \"pareti\": [{\"nome\": \"Parete A\", \"lunghezza\": 360, \"moduli\": [{\"tipo\": \"lavello\", \"larghezza\": 80}]}], \"penisola\": null, \"isola\": null, \"spiegazione\": \"2-3 frasi, tono cordiale\", \"consigli\": [\"al massimo 3 consigli brevi\"]}\n\nRegole del JSON:\n- \"tipo\" è sempre uno di: lavello, lavastoviglie, piano_cottura, forno_sotto, base, cassettiera, estraibile, angolo, frigo_sottotop, colonna_frigo, colonna_forno, colonna_dispensa, raccordo.\n- I moduli di ogni parete vanno elencati da sinistra a destra. Al massimo 2 pareti.\n- \"penisola\" e \"isola\", se presenti, hanno la forma {\"lunghezza\": 150, \"moduli\": [...]}, altrimenti null.\n- Le larghezze sono numeri interi in centimetri.";
   var EXAMPLE = {"titolo": "Cucina lineare con colonne", "pareti": [{"nome": "Parete A", "lunghezza": 360, "moduli": [{"tipo": "lavello", "larghezza": 80}, {"tipo": "lavastoviglie", "larghezza": 60}, {"tipo": "piano_cottura", "larghezza": 60}, {"tipo": "estraibile", "larghezza": 40}, {"tipo": "colonna_forno", "larghezza": 60}, {"tipo": "colonna_frigo", "larghezza": 60}]}], "penisola": null, "isola": null, "spiegazione": "Un esempio di cucina lineare: lavello e lavastoviglie vicini, il piano cottura con la cappa e un estraibile per spezie e oli, poi le colonne di forno e frigo. Scrivi la tua parete e i tuoi desideri qui sopra e il progettista prepara la tua proposta.", "consigli": ["Tra piano cottura e colonna conviene lasciare un po' di piano libero per appoggiare le pentole", "Con una parete più corta il frigo può diventare sottotop e il forno andare sotto il piano"]};
+  EXAMPLE.titolo = TX.example.titolo; EXAMPLE.spiegazione = TX.example.spiegazione; EXAMPLE.consigli = TX.example.consigli;
   var TIPI = { lavello: ['LAV', 'lavello'], lavastoviglie: ['LS', 'lavastoviglie'], piano_cottura: ['PC', 'piano cottura'], forno_sotto: ['FORNO', 'forno sotto il piano'], base: ['', 'base'], cassettiera: ['CASS', 'cassettiera'], estraibile: ['E', 'estraibile'], angolo: ['ANG', 'angolo'], frigo_sottotop: ['FRIGO', 'frigo sottotop'], colonna_frigo: ['FRIGO', 'colonna frigo'], colonna_forno: ['FORNO', 'colonna forno'], colonna_dispensa: ['DISP', 'colonna dispensa'], raccordo: ['', 'raccordo'] };
+  Object.keys(TIPI).forEach(function (k) { TIPI[k] = [TX.tipiShort[k] != null ? TX.tipiShort[k] : TIPI[k][0], TX.tipi[k] || TIPI[k][1]]; });
   var samplePromise = (window.claude && typeof window.claude.use === 'function') ? window.claude.use('sample').catch(function () { return null; }) : Promise.resolve(null);
 
   function el(tag, attrs, cls) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (cls) e.setAttribute('class', cls); return e; }
@@ -1235,12 +1295,12 @@ section[id] { scroll-margin-top: 90px; }
   function normalize(p) {
     if (!p || typeof p !== 'object') throw { code: 'invalid_json' };
     var rows = [];
-    (Array.isArray(p.pareti) ? p.pareti.slice(0, 2) : []).forEach(function (r, i) { var n = normRow(r, i ? 'Parete B' : 'Parete A'); if (n) { n.kind = 'parete'; rows.push(n); } });
-    var pen = normRow(p.penisola, 'Penisola'); if (pen) { pen.kind = 'penisola'; pen.nome = 'Penisola'; rows.push(pen); }
-    var isl = normRow(p.isola, 'Isola'); if (isl) { isl.kind = 'isola'; isl.nome = 'Isola'; rows.push(isl); }
+    (Array.isArray(p.pareti) ? p.pareti.slice(0, 2) : []).forEach(function (r, i) { var n = normRow(r, ''); if (n) { n.kind = 'parete'; n.nome = i ? TX.wallB : TX.wallA; rows.push(n); } });
+    var pen = normRow(p.penisola, ''); if (pen) { pen.kind = 'penisola'; pen.nome = TX.pen; rows.push(pen); }
+    var isl = normRow(p.isola, ''); if (isl) { isl.kind = 'isola'; isl.nome = TX.isl; rows.push(isl); }
     if (!rows.length) throw { code: 'invalid_json' };
     return {
-      titolo: (String(p.titolo || '').replace(/\s*(?:[·\-–—,(]|\b(?:da|di)\b)?\s*\d+(?:[.,]\d+)?\s*(?:cm|m|metri)\b\)?/gi, '').trim() || 'La tua cucina').slice(0, 90),
+      titolo: (String(p.titolo || '').replace(/\s*(?:[·\-–—,(]|\b(?:da|di|de|of|von|din)\b)?\s*\d+(?:[.,]\d+)?\s*(?:cm|m|metri|metres?|meters?|mètres?|Meter|metri)\b\)?/gi, '').trim() || TX.titleFallback).slice(0, 90),
       rows: rows,
       spiegazione: String(p.spiegazione || '').slice(0, 600),
       consigli: (Array.isArray(p.consigli) ? p.consigli : []).slice(0, 3).map(function (c) { return String(c).slice(0, 160); })
@@ -1320,12 +1380,12 @@ section[id] { scroll-margin-top: 90px; }
     aiTips.hidden = !plan.consigli.length;
     var summary = plan.rows.map(function (r) { return r.nome + ': ' + r.mods.filter(function (m) { return m.t !== 'raccordo'; }).map(function (m) { return TIPI[m.t][1]; }).join(', '); }).join('. ');
     var note = aiDesc.value.trim();
-    wallCta.setAttribute('data-prefill', 'Vorrei questo progetto: ' + plan.titolo + '. ' + summary + '.' + (note ? ' Le mie note: ' + note : ''));
+    wallCta.setAttribute('data-prefill', TX.prefillPlan.replace('{t}', function () { return plan.titolo; }).replace('{s}', function () { return summary; }) + (note ? TX.notes.replace('{n}', function () { return note; }) : ''));
     show3d(plan);
   }
 
   function buildPrompt(len, f, desc) {
-    return PROMPT.replace('{LEN}', len ? len + ' cm' : 'non indicata').replace('{FORMA}', f).replace('{DESC}', desc || 'nessuna descrizione');
+    return PROMPT.replace('{LEN}', len ? len + ' cm' : 'non indicata').replace('{FORMA}', f).replace('{LINGUA}', TX.aiLang).replace('{DESC}', function () { return desc || 'nessuna descrizione'; });
   }
 
   formaBox.querySelectorAll('button').forEach(function (b) {
@@ -1343,7 +1403,7 @@ section[id] { scroll-margin-top: 90px; }
     aiStatus.textContent = msg || '';
   }
   function fail(msg) { setBusy(false); aiStatus.className = 'ai-status err'; aiStatus.textContent = msg; }
-  var ERR = {
+  var ERR = TX.err, ERR_IT_UNUSED = {
     not_granted: "Per usare il progettista devi consentire l'uso dell'AI. Intanto puoi richiederci un progetto con il pulsante qui sotto.",
     rate_limited: 'Troppe richieste in poco tempo: riprova tra qualche minuto.',
     daily_limit: 'Per oggi hai già provato il progettista 3 volte. Richiedi il progetto con le misure: lo prepariamo noi sulla tua cucina.',
@@ -1365,21 +1425,21 @@ section[id] { scroll-margin-top: 90px; }
     var len = parseInt(aiLen.value, 10);
     if (!(len >= 60 && len <= 1500)) len = 0;
     var desc = aiDesc.value.trim().slice(0, 1500);
-    if (!len && desc.length < 8) { fail('Scrivi almeno la lunghezza della parete o qualche riga sulla tua cucina.'); return; }
-    wallCta.setAttribute('data-prefill', 'Vorrei un progetto per la mia cucina. ' + (len ? 'Parete ' + len + ' cm. ' : '') + desc);
+    if (!len && desc.length < 8) { fail(TX.needInput); return; }
+    wallCta.setAttribute('data-prefill', TX.prefillStart + ' ' + (len ? TX.wallLen.replace('{n}', len) + ' ' : '') + desc);
     ctl = new AbortController();
-    setBusy(true, 'Il progettista sta disegnando la tua cucina');
+    setBusy(true, TX.busy);
     try {
       var sample = await samplePromise, plan;
       if (sample) {
         plan = await sample.json(buildPrompt(len, forma, desc), { signal: ctl.signal, cache: false });
       } else {
         if (!useAiQuota()) throw { code: 'daily_limit' };
-        var r = await fetch('/api/progetta', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ lunghezza: len, forma: forma, descrizione: desc }), signal: ctl.signal });
+        var r = await fetch('/api/progetta', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ lunghezza: len, forma: forma, descrizione: desc, lingua: TX.lang }), signal: ctl.signal });
         if (!r.ok) throw { code: r.status === 429 ? 'rate_limited' : 'unavailable' };
         plan = await r.json();
       }
-      render(normalize(plan), 'La tua proposta');
+      render(normalize(plan), TX.tagYours);
       setBusy(false, '');
       aiOut.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (err) {
@@ -1695,11 +1755,11 @@ section[id] { scroll-margin-top: 90px; }
   function show3d(plan) {
     K3.scene = build3d(plan);
     K3.yaw = YAW0; K3.pitch = PITCH0; K3.fresh = true; stop3();
-    k3.setAttribute('aria-label', 'Vista 3D della cucina proposta: ' + plan.rows.map(function (r) { return r.nome; }).join(', '));
+    k3.setAttribute('aria-label', TX.k3aria + plan.rows.map(function (r) { return r.nome; }).join(', '));
     if (K3.inView && K3.mode === '3d') intro3(); else draw3d();
   }
 
-  if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) document.getElementById('k3-hint').textContent = 'Scorri di lato per ruotare';
+  if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) document.getElementById('k3-hint').textContent = TX.hintTouch;
   var drag3 = null;
   k3.addEventListener('pointerdown', function (e) {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
@@ -1749,7 +1809,7 @@ section[id] { scroll-margin-top: 90px; }
     }, { threshold: 0.35 }).observe(k3Wrap);
   } else K3.inView = true;
 
-  render(normalize(EXAMPLE), 'Esempio');
+  render(normalize(EXAMPLE), TX.tagExample);
 
   /* ---- Quiz ---- */
   var STYLES = {
@@ -1785,6 +1845,8 @@ section[id] { scroll-margin-top: 90px; }
       ['', 'Tutta la casa', '<path d="M20 52 L60 22 L82 38 L82 28 L90 28 L90 44 L100 52"/><path d="M28 50 L28 84 L92 84 L92 50"/><path class="thin" d="M52 84 L52 64 L68 64 L68 84 M36 60 L46 60 L46 70 L36 70 Z M74 60 L84 60 L84 70 L74 70 Z"/>']
     ]}
   ];
+  Object.keys(TX.styles).forEach(function (k) { STYLES[k] = TX.styles[k]; });
+  QUIZ.forEach(function (Q, i) { var t = TX.quiz[i]; Q.q = t.q; Q.key = t.key; Q.opts.forEach(function (o, j) { o[1] = t.opts[j]; }); });
   var quizBox = document.getElementById('quiz');
   var answers = [];
   function svgIcon(inner) { return '<svg viewBox="0 0 120 100" aria-hidden="true"><g class="qi">' + inner + '</g></svg>'; }
@@ -1795,7 +1857,7 @@ section[id] { scroll-margin-top: 90px; }
   }
   function renderQ(i) {
     var Q = QUIZ[i];
-    var h = '<div class="quiz-step enter"><div class="quiz-top"><span class="quiz-count">Domanda ' + (i + 1) + ' di ' + QUIZ.length + '</span><div class="quiz-bar" aria-hidden="true">' + bar(i) + '</div></div>';
+    var h = '<div class="quiz-step enter"><div class="quiz-top"><span class="quiz-count">' + TX.quizCount.replace('{n}', i + 1).replace('{t}', QUIZ.length) + '</span><div class="quiz-bar" aria-hidden="true">' + bar(i) + '</div></div>';
     h += '<h3 class="qq">' + Q.q + '</h3><div class="opts">';
     Q.opts.forEach(function (o, j) {
       h += '<button type="button" class="opt" data-j="' + j + '">' + svgIcon(o[2]) + '<span>' + o[1] + '</span></button>';
@@ -1817,16 +1879,16 @@ section[id] { scroll-margin-top: 90px; }
     Object.keys(score).forEach(function (k) { if (score[k] > score[best]) best = k; });
     var S = STYLES[best];
     var room = answers[3][1];
-    var lines = ['Ciao CataHouse! Ho fatto il quiz sul sito: il mio stile è ' + S.name + '.'];
+    var lines = [TX.quizWa.replace('{s}', function () { return S.name; })];
     QUIZ.forEach(function (Q, i) { lines.push(Q.key + ': ' + answers[i][1]); });
-    lines.push('Vorrei parlarne in negozio.');
+    lines.push(TX.quizWaEnd);
     var url = 'https://wa.me/393281804285?text=' + encodeURIComponent(lines.join('\n'));
     var chair = QUIZ[0].opts.filter(function (o) { return o[0] === best; })[0][2];
-    var h = '<div class="quiz-step enter"><div class="quiz-top"><span class="quiz-count">Il tuo stile</span><div class="quiz-bar" aria-hidden="true">' + bar(QUIZ.length) + '</div></div>';
+    var h = '<div class="quiz-step enter"><div class="quiz-top"><span class="quiz-count">' + TX.yourStyle + '</span><div class="quiz-bar" aria-hidden="true">' + bar(QUIZ.length) + '</div></div>';
     h += '<div class="res">' + svgIcon(chair) + '<div class="txt"><h3 class="res-name">' + S.name + '</h3><p>' + S.desc + '</p><ul class="res-list">';
     S.tips.forEach(function (t) { h += '<li>' + t + '</li>'; });
-    h += '</ul><p>Partiamo da: <b>' + room + '</b>. Vieni a vederlo dal vivo in Viale Mazzini.</p>';
-    h += '<div class="actions"><a class="btn btn-red" href="' + url + '" target="_blank" rel="noopener">' + CHAT + 'Parliamone in negozio</a><button type="button" class="btn btn-ghost" id="quiz-again">Rifai il quiz</button></div></div></div></div>';
+    h += '</ul><p>' + TX.startFrom.replace('{r}', function () { return '<b>' + room + '</b>'; }) + '</p>';
+    h += '<div class="actions"><a class="btn btn-red" href="' + url + '" target="_blank" rel="noopener">' + CHAT + TX.talk + '</a><button type="button" class="btn btn-ghost" id="quiz-again">' + TX.again + '</button></div></div></div></div>';
     quizBox.innerHTML = h;
     document.getElementById('quiz-again').addEventListener('click', function () { answers = []; renderQ(0); });
   }
