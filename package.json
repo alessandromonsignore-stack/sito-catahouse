@@ -1,0 +1,8 @@
+{
+  "name": "sito-catahouse",
+  "private": true,
+  "description": "Sito di CataHouse group Arredamenti, Alba Adriatica",
+  "dependencies": {
+    "@netlify/blobs": "^11.1.4"
+  }
+}
