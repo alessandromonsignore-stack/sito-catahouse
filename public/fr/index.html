@@ -369,9 +369,9 @@ a:focus-visible, button:focus-visible { outline: 1px solid var(--brass); outline
 
 /* Chi siamo */
 .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(36px, 7vw, 104px); align-items: center; }
-.year { display: grid; gap: 14px; }
+.year { display: grid; gap: 14px; justify-items: center; width: fit-content; max-width: 100%; }
 .year b { font-family: var(--f-display); font-weight: 200; font-size: clamp(6rem, 2.8rem + 12vw, 12.5rem); line-height: 0.85; letter-spacing: -0.03em; color: var(--brass); }
-.year span { font-family: var(--f-display); font-size: 0.8rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ivory-3); }
+.year span { font-family: var(--f-display); font-size: 0.8rem; letter-spacing: 0.24em; padding-left: 0.24em; text-transform: uppercase; color: var(--ivory-3); text-align: center; }
 .about .txt { display: grid; gap: 22px; max-width: 34em; }
 .about .txt p:not(.eyebrow) { color: var(--ivory-2); font-weight: 400; }
 .about .txt p strong { color: var(--ivory); font-weight: 600; }
