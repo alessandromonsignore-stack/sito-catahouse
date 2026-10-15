@@ -26,6 +26,14 @@ async function noteError(store, info) {
   try { if (store) await store.setJSON('ultimo-errore', { ...info, quando: new Date().toISOString() }); } catch {}
 }
 
+// Claude Haiku 5.5 di base "ragiona" prima di rispondere e il ragionamento consuma max_tokens:
+// qui lo spegniamo, per avere subito il JSON. I modelli di riserva non hanno bisogno di altro.
+function requestBody(model, prompt) {
+  const body = { model, max_tokens: 4000, messages: [{ role: 'user', content: prompt }] };
+  if (/^claude-haiku-5/.test(model)) body.thinking = { type: 'disabled' };
+  return body;
+}
+
 function reply(status, body) {
   return new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
 }
@@ -82,7 +90,7 @@ export default async (req) => {
       r = await fetch(base + '/v1/messages', {
         method: 'POST',
         headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-        body: JSON.stringify({ model, max_tokens: 1800, messages: [{ role: 'user', content: prompt }] })
+        body: JSON.stringify(requestBody(model, prompt))
       });
     } catch (e) {
       await noteError(store, { fase: 'rete', modello: model, dettaglio: String((e && e.message) || e).slice(0, 200) });
@@ -95,10 +103,16 @@ export default async (req) => {
       if (r.status === 429) return reply(429, { error: 'rate_limited' });
       return reply(502, { error: 'upstream' });
     }
-    const data = await r.json();
-    const text = (data.content || []).map((c) => c.text || '').join('');
+    const data = await r.json().catch(() => ({}));
+    const blocks = Array.isArray(data.content) ? data.content : [];
+    const text = blocks.filter((c) => c && c.type === 'text').map((c) => c.text || '').join('');
+    if (!text.trim()) {
+      // risposta senza testo (per esempio finita nel ragionamento): annota e prova il modello successivo
+      await noteError(store, { fase: 'risposta vuota', modello: model, fine: data.stop_reason || null, blocchi: blocks.map((c) => c && c.type).join(',') });
+      continue;
+    }
     try { return reply(200, extractJson(text)); }
-    catch { await noteError(store, { fase: 'risposta', modello: model, dettaglio: text.slice(0, 200) }); return reply(502, { error: 'invalid_json' }); }
+    catch { await noteError(store, { fase: 'risposta', modello: model, fine: data.stop_reason || null, dettaglio: text.slice(0, 200) }); return reply(502, { error: 'invalid_json' }); }
   }
   return reply(502, { error: 'no_model' });
 };
