@@ -929,7 +929,7 @@ section[id] { scroll-margin-top: 90px; }
         <li class="step">
           <span class="num" aria-hidden="true">II</span>
           <h3>Venez nous voir</h3>
-          <p>Nous vous attendons Viale Mazzini : voyez les meubles en vrai et décidez sans vous presser. Nous vous aidons pour les finitions et les associations.</p>
+          <p>Nous vous attendons au Viale Mazzini 154/B, à Alba Adriatica : voyez les meubles en vrai et décidez sans vous presser. Nous vous aidons pour les finitions et les associations.</p>
         </li>
         <li class="step">
           <span class="num" aria-hidden="true">III</span>
@@ -1023,7 +1023,7 @@ section[id] { scroll-margin-top: 90px; }
       <dl class="rows">
         <div class="row">
           <dt>Téléphone</dt>
-          <dd><span class="num" id="tel">328 180 4285</span> <button class="copy" id="copy-tel" type="button">Copier</button> <a href="tel:+393281804285">Appeler</a></dd>
+          <dd><span class="num" id="tel">328 180 4285</span> <a href="tel:+393281804285">Appeler</a></dd>
         </div>
         <div class="row">
           <dt>WhatsApp</dt>
@@ -1139,7 +1139,7 @@ section[id] { scroll-margin-top: 90px; }
     s.removeAllRanges();
     s.addRange(r);
   }
-  btn.addEventListener('click', function () {
+  if (btn) btn.addEventListener('click', function () {
     var text = '3281804285';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {

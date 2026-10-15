@@ -929,7 +929,7 @@ section[id] { scroll-margin-top: 90px; }
         <li class="step">
           <span class="num" aria-hidden="true">II</span>
           <h3>Vieni a trovarci</h3>
-          <p>Ti aspettiamo in Viale Mazzini: guarda i mobili dal vivo e decidi con calma. Ti aiutiamo con finiture e abbinamenti.</p>
+          <p>Ti aspettiamo in Viale Mazzini 154/B ad Alba Adriatica: guarda i mobili dal vivo e decidi con calma. Ti aiutiamo con finiture e abbinamenti.</p>
         </li>
         <li class="step">
           <span class="num" aria-hidden="true">III</span>
@@ -1023,7 +1023,7 @@ section[id] { scroll-margin-top: 90px; }
       <dl class="rows">
         <div class="row">
           <dt>Telefono</dt>
-          <dd><span class="num" id="tel">328 180 4285</span> <button class="copy" id="copy-tel" type="button">Copia</button> <a href="tel:+393281804285">Chiama</a></dd>
+          <dd><span class="num" id="tel">328 180 4285</span> <a href="tel:+393281804285">Chiama</a></dd>
         </div>
         <div class="row">
           <dt>WhatsApp</dt>
@@ -1139,7 +1139,7 @@ section[id] { scroll-margin-top: 90px; }
     s.removeAllRanges();
     s.addRange(r);
   }
-  btn.addEventListener('click', function () {
+  if (btn) btn.addEventListener('click', function () {
     var text = '3281804285';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
