@@ -11,14 +11,19 @@ const PROMPT = "Sei il progettista di cucine dello showroom CataHouse group Arre
 const MODELS = (process.env.AI_MODEL ? [process.env.AI_MODEL] : []).concat(['claude-haiku-5-5', 'claude-haiku-4-5', 'claude-sonnet-4-5']);
 
 const MONTHLY_LIMIT = Number(process.env.AI_MONTHLY_LIMIT) || 80;
+const monthKey = () => 'proposte-' + new Date().toISOString().slice(0, 7);
+const openStore = () => getStore({ name: 'progettista', consistency: 'strong' });
 
-async function takeFromMonthlyBudget() {
-  const store = getStore({ name: 'progettista', consistency: 'strong' });
-  const key = 'proposte-' + new Date().toISOString().slice(0, 7);
-  const used = Number(await store.get(key)) || 0;
+async function takeFromMonthlyBudget(store) {
+  const used = Number(await store.get(monthKey())) || 0;
   if (used >= MONTHLY_LIMIT) return false;
-  await store.set(key, String(used + 1));
+  await store.set(monthKey(), String(used + 1));
   return true;
+}
+
+// Annota l'ultimo problema (senza chiavi né dati del cliente), per capire cosa non va.
+async function noteError(store, info) {
+  try { if (store) await store.setJSON('ultimo-errore', { ...info, quando: new Date().toISOString() }); } catch {}
 }
 
 function reply(status, body) {
@@ -31,7 +36,28 @@ function extractJson(text) {
   return JSON.parse(text.slice(a, b + 1));
 }
 
+// GET /api/progetta: stato della funzione (solo sì/no, nessun segreto).
+async function status() {
+  const out = {
+    funzione: 'ok',
+    chiaveAI: !!process.env.ANTHROPIC_API_KEY,
+    indirizzoAI: !!process.env.ANTHROPIC_BASE_URL,
+    chiaveGateway: !!process.env.NETLIFY_AI_GATEWAY_KEY,
+    limiteMensile: MONTHLY_LIMIT
+  };
+  try {
+    const store = openStore();
+    out.proposteQuestoMese = Number(await store.get(monthKey())) || 0;
+    out.ultimoErrore = await store.get('ultimo-errore', { type: 'json' });
+    out.archivio = 'ok';
+  } catch (e) {
+    out.archivio = 'errore: ' + String((e && e.message) || e).slice(0, 160);
+  }
+  return reply(200, out);
+}
+
 export default async (req) => {
+  if (req.method === 'GET') return status();
   if (req.method !== 'POST') return reply(405, { error: 'method_not_allowed' });
   let body;
   try { body = await req.json(); } catch { return reply(400, { error: 'bad_request' }); }
@@ -42,22 +68,37 @@ export default async (req) => {
   const prompt = PROMPT.replace('{LEN}', len ? len + ' cm' : 'non indicata').replace('{FORMA}', forma).replace('{DESC}', desc || 'nessuna descrizione');
   const base = (process.env.ANTHROPIC_BASE_URL || 'https://api.anthropic.com').replace(/\/$/, '');
   const key = process.env.ANTHROPIC_API_KEY;
-  if (!key) return reply(503, { error: 'ai_not_configured' });
+  let store = null;
+  try { store = openStore(); } catch {}
+  if (!key) { await noteError(store, { fase: 'chiave', dettaglio: 'ANTHROPIC_API_KEY assente' }); return reply(503, { error: 'ai_not_configured' }); }
+  if (!store) return reply(503, { error: 'counter_unavailable' });
   let allowed;
-  try { allowed = await takeFromMonthlyBudget(); } catch { return reply(503, { error: 'counter_unavailable' }); }
+  try { allowed = await takeFromMonthlyBudget(store); }
+  catch (e) { await noteError(store, { fase: 'contatore', dettaglio: String((e && e.message) || e).slice(0, 200) }); return reply(503, { error: 'counter_unavailable' }); }
   if (!allowed) return reply(503, { error: 'monthly_limit' });
   for (const model of MODELS) {
-    const r = await fetch(base + '/v1/messages', {
-      method: 'POST',
-      headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-      body: JSON.stringify({ model, max_tokens: 1800, messages: [{ role: 'user', content: prompt }] })
-    });
-    if (r.status === 404 || r.status === 400) continue;
-    if (r.status === 429) return reply(429, { error: 'rate_limited' });
-    if (!r.ok) return reply(502, { error: 'upstream' });
+    let r;
+    try {
+      r = await fetch(base + '/v1/messages', {
+        method: 'POST',
+        headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+        body: JSON.stringify({ model, max_tokens: 1800, messages: [{ role: 'user', content: prompt }] })
+      });
+    } catch (e) {
+      await noteError(store, { fase: 'rete', modello: model, dettaglio: String((e && e.message) || e).slice(0, 200) });
+      return reply(502, { error: 'upstream' });
+    }
+    if (!r.ok) {
+      const detail = (await r.text().catch(() => '')).slice(0, 300);
+      await noteError(store, { fase: 'AI', modello: model, stato: r.status, dettaglio: detail });
+      if (r.status === 404 || r.status === 400) continue;
+      if (r.status === 429) return reply(429, { error: 'rate_limited' });
+      return reply(502, { error: 'upstream' });
+    }
     const data = await r.json();
     const text = (data.content || []).map((c) => c.text || '').join('');
-    try { return reply(200, extractJson(text)); } catch { return reply(502, { error: 'invalid_json' }); }
+    try { return reply(200, extractJson(text)); }
+    catch { await noteError(store, { fase: 'risposta', modello: model, dettaglio: text.slice(0, 200) }); return reply(502, { error: 'invalid_json' }); }
   }
   return reply(502, { error: 'no_model' });
 };
